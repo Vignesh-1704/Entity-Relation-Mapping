@@ -1,0 +1,48 @@
+
+
+                                                @JoinColumn(name = "")
+
+ The @JoinColumn annotation in JPA is used to specify the foreign key column when defining a relationship between 2 entities.
+
+
+                                                 @JoinTable(name="")
+
+
+ Book and Author has a Many to Many relationship. where one book can have multiple authors and one author can have multiple authors
+
+                                @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+                                @JoinTable(
+                                        name = "book_author",
+                                        joinColumns = @JoinColumn(name = "book_id"),
+                                        inverseJoinColumns = @JoinColumn(name = "author_id")
+                                )
+                                private List<Author> authorList = new ArrayList<>();
+
+
+ @JoinTable(name="book_author") specifies the join table that will be used to store the relationship between Book & Author
+ In a many-to-many relationship,
+ an intermediate join table is used to link the primary keys of the two entities.
+
+ name = "book_author": Specifies the name of the join table.
+
+ Owning Side of the Relationship
+ joinColumns = @JoinColumn(name = "book_id"): Specifies the foreign key column
+                                              in the join table that links to the Book entity's
+                                              primary key (book_id).
+
+ Inverse Side of the Relationship
+ inverseJoinColumns = @JoinColumn(name = "author_id"): Specifies the foreign key column
+                                                       in the join table that links to the Author entity's
+                                                       primary key (author_id).
+
+
+
+
+ Whenever we have @Mapping Relationship based annotation we use @JoinColumn or @JoinTable Annotation in conjunction
+
+ In a One-to-Many or Many-to-One relationship, @JoinColumn is used on the owning side
+ and it defines the foreign key column in the table of the owning entity.
+
+ In a Many-to-Many relationship, on the other hand, the situation is different.
+ A join table is used to represent the association between the two entities
+ @JoinTable is used on the owning side.

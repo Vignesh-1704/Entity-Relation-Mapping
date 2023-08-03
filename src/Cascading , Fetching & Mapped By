@@ -1,0 +1,46 @@
+
+
+                                                    Cascading & Join
+
+Cascading, in the context of databases and object-relational mapping (ORM)
+frameworks like JPA (Java Persistence API) is
+when you perform a particular action on one object,
+cascading ensures that the same action is automatically applied to other related objects associated with it.
+
+There are different types of Cascading operations:
+
+CascadeType.ALL: Performs all actions (e.g., persist, remove, merge, refresh, and detach)
+CascadeType.PERSIST: Automatically persists related entities when the parent entity is persisted.
+CascadeType.MERGE: Automatically merges related entities when the parent entity is merged (updated).
+CascadeType.REMOVE: Automatically removes related entities when the parent entity is removed.
+CascadeType.REFRESH: Automatically refreshes related entities when the parent entity is refreshed.
+CascadeType.DETACH: Automatically detaches related entities when the parent entity is detached.
+
+
+
+
+                                                       Fetching
+
+ FetchType.LAZY : related entities are not loaded immediately when the owning entity is fetched.
+                  saves resources and the realted entities are loaded only when asked for it !
+
+                  BookShelf Books
+
+ FetchType.EAGER : related entities are eagerly loaded along with the owning entity during the initial fetch.
+                   This means that whenever the owning entity is fetched from the database,
+                   the related entities are also fetched immediately, regardless of whether the application needs them.
+
+
+
+                                                        MappedBy
+
+ MappedBy attribute is used to define the owning side of a bi-directional relationship between 2 Entities.
+ It is typically used when you have a relationship between two entities, and one side "owns" the relationship,
+ while the other side is the "inverse" or "mapped" side.
+
+ In a Uni-directional Relationship :
+ When you specify mappedBy on one side of the relationship,
+ it means that this side is not the owning side, and the relationship is maintained by the other side.
+
+ In a Bi-directional Relationship :
+ Both entities have references to each other, and mappedBy helps establish the connection between them.
